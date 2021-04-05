@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title>Shfrly | Online Image encoder</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">   
+        <meta name="description" content="Image encoder, turn your image to line of words using the technology of base 64, hide and save your private image in text form">
+        <meta name="title" content="Shfrly | Online Image encoder Base64 , Hide your image in a text form .">
+        <meta name="description" content="Image encoder, turn your image into lines of words using the technology of base 64, hide and save your private image in text form,  use it to turn image to text">
+        <meta name="keywords" content="Encoder, encode, image, base64, shfrly, shfrly.tk, tiktok">
+        <meta name="robots" content="index, follow">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="language" content="English">
+        <meta name="author" content="Abdallah Hamouda">
+        
+    </head>
+    <body>
+        <nav>
+            <a href="/" class="log"><h1>Shfrly</h1></a>
+        </nav>
+        <main>
+        <div class="wrap" id="el">
+        <img :src="src" alt="" id="blah">
+    <div>
+        <input type="file" id="ImageDec" @change="show">
+    </div>
+    <textarea name="" id="area" cols="30" rows="10" v-model="textarea"></textarea>
+    <button @click="copy">Copy</button>
+    </div>    
+</main>   
+<footer>
+    <a href="www.dremor.tk">Dremor.tk</a>
+    <a href="www.byhamouda.tk">Byhamouda</a>
+</footer> 
+<script>
+    //onchange="hololo();"
+    var vue = new Vue({
+        el: '#el',
+        data:{
+            textarea:'',
+            src: ''
+        },
+        methods:{
+            show(input){
+            let pp = document.getElementById("ImageDec")
+
+            let textarea = document.querySelector('textarea')
+             textarea.value = " "        
+             if (pp.files && pp.files[0]) {
+                 var reader = new FileReader();  
+                 reader.onloadend = function(e) {
+                    document.querySelector('#blah').setAttribute('src', e.target.result);
+                    textarea.value = e.target.result
+                 }
+                 reader.readAsDataURL(pp.files[0]);
+                 
+}
+            },
+            copy(){
+                let text = document.querySelector('textarea')
+console.log(text.value)
+text.select();
+document.execCommand("copy");
+alert("Text Copied");
+const image = document.querySelector('img').src;
+            }
+        }
+    })
+</script>
+    </body>
+</html>
